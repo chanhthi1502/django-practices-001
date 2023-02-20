@@ -49,3 +49,36 @@ def monthly_challenge(request, month):
     except:
         return HttpResponseNotFound("<h1>This is not supported</h1>")
 ```
+
+- Make dynamic variable display into html
+
+In render method, we add third argument is one dictionary with key (variable to send in html) and value. For example, we make dictionary with 2 keys `text` and `month`
+
+```python
+def monthly_challenge(request, month):
+    try:
+        challenge_text = monthly_challenges[month]
+        return render(
+            request,
+            "challenges/challenge.html",
+            {"text": challenge_text, "month": month},
+        )
+    except:
+        return HttpResponseNotFound("<h1>This is not supported</h1>")
+
+```
+
+in HTML we use {{<key_name>}} to call that value
+
+```html
+<head>
+  <meta charset="UTF-8" />
+  <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>{{ month }} Challenge</title>
+</head>
+<body>
+  <h1>This {{ month }}'s Challenge</h1>
+  <h2>{{ text }}</h2>
+</body>
+```
