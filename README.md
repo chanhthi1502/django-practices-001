@@ -37,3 +37,15 @@ INSTALLED_APPS = [
 ```
 
 - Add folder "challenges" under INSTALLED_APPS, from now project will register challenges folder as app in project.
+
+<b>Noted:</b>
+Instead of using library `django.template.loader import render_to_string` we can use shorter way `from django.shortcuts import render`. Example
+
+```python
+def monthly_challenge(request, month):
+    try:
+        challenge_text = monthly_challenges[month]
+        return render(request, "challenges/challenge.html")
+    except:
+        return HttpResponseNotFound("<h1>This is not supported</h1>")
+```
