@@ -90,3 +90,5 @@ Make title is capitalize. We can change it in html file. By using
 ```html
 <title>{{ month | title}} Challenge</title>
 ```
+
+More information about Filters: https://docs.djangoproject.com/en/4.1/ref/templates/builtins/
