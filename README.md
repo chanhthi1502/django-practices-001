@@ -117,8 +117,32 @@ In `index.html` we use "for" tag loop to generate list of month in html
 <body>
   <ul>
     {% for month in months %}
-    <li><a href="">{{month| title}}</a></li>
+    <li><a href="/challenges/{{ month }}">{{month| title}}</a></li>
     {% endfor %}
   </ul>
 </body>
+```
+
+- Using URL tag
+
+Rather than hard code URL `href = "/challenges"` we can use URL tag to call it
+
+```html
+  <body>
+    <ul>
+      {% for month in months %}
+      <li><a href="{% url "month-challenge" month %}">{{month| title}}</a></li>
+      {% endfor %}
+    </ul>
+  </body>
+```
+
+`month-challenge` we get it from urls.py file
+
+```python
+urlpatterns = [
+    path("", views.index),  # /challenges?
+    path("<int:month>", views.monthly_challenge_by_number),
+    path("<str:month>", views.monthly_challenge, name="month-challenge"),
+]
 ```
