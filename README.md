@@ -83,4 +83,10 @@ in HTML we use {{<key_name>}} to call that value
 </body>
 ```
 
-## check github
+- Filters
+
+Make title is capitalize. We can change it in html file. By using
+
+```html
+<title>{{ month | title}} Challenge</title>
+```
