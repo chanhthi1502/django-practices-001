@@ -96,3 +96,29 @@ More information about Filters: https://docs.djangoproject.com/en/4.1/ref/templa
 - Beautify template (html code) in Django
 
 Install extension Django (from Baptiste Darthenay)
+
+- "For" loop tag in HTML
+
+When we have to send list of value to html display. For example send list of months
+
+In `views.py` we send months list in render method
+
+```python
+def index(request):
+    list_items = ""
+    months = list(monthly_challenges.keys())
+
+    return render(request, "challenges/index.html", {"months": months})
+```
+
+In `index.html` we use "for" tag loop to generate list of month in html
+
+```html
+<body>
+  <ul>
+    {% for month in months %}
+    <li><a href="">{{month| title}}</a></li>
+    {% endfor %}
+  </ul>
+</body>
+```
