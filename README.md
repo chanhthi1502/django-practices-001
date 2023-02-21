@@ -92,3 +92,7 @@ Make title is capitalize. We can change it in html file. By using
 ```
 
 More information about Filters: https://docs.djangoproject.com/en/4.1/ref/templates/builtins/
+
+- Beautify template (html code) in Django
+
+Install extension Django (from Baptiste Darthenay)
