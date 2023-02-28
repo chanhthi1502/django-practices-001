@@ -146,3 +146,16 @@ urlpatterns = [
     path("<str:month>", views.monthly_challenge, name="month-challenge"),
 ]
 ```
+
+`if-else` tag is using like this
+
+```html
+<body>
+  <h1>This {{ month | title}}'s Challenge</h1>
+  {% if text is not None %}
+  <h2>{{ text }}</h2>
+  {% else %}
+  <p>There is no challenge for this month yet!</p>
+  {% endif %}
+</body>
+```
