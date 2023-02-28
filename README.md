@@ -159,3 +159,44 @@ urlpatterns = [
   {% endif %}
 </body>
 ```
+
+- Template Inheritance
+
+Make folder in root project calls `templates` so every app in project can inherit. Create one template call `base.html` which is every page will reuse it
+
+```html
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>{% block page_title %}My Challenge{% endblock %}</title>
+  </head>
+  <body>
+    {% block content %}{% endblock %}
+  </body>
+</html>
+```
+
+Any html want to reuse this `base.html` need to add extends
+
+```html
+{% extends 'base.html' %}
+```
+
+to use that we need to add blocks in html
+
+```html
+  {% block page_title %}
+  All Challenges
+  {% endblock%}
+
+  {% block content %}
+   <ul>
+    {% for month in months %}
+    <li><a href="{% url "month-challenge" month %}">{{month| title}}</a></li>
+    {% endfor %}
+   </ul>
+  {% endblock %}
+```
