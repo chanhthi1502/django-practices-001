@@ -200,3 +200,26 @@ to use that we need to add blocks in html
    </ul>
   {% endblock %}
 ```
+
+- Including Partial Template Snippets
+
+Create one html we want to reuse
+
+```html
+<header>
+  <nav><a href="">All Challenges</a></nav>
+</header>
+```
+
+To add inside another template we will use `<% include %>`
+
+```html
+ {% block content %}
+    {% include "challenges/includes/header.html" %}
+   <ul>
+    {% for month in months %}
+    <li><a href="{% url "month-challenge" month %}">{{month| title}}</a></li>
+    {% endfor %}
+   </ul>
+ {% endblock %}
+```
