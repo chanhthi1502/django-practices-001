@@ -223,3 +223,16 @@ To add inside another template we will use `<% include %>`
    </ul>
  {% endblock %}
 ```
+
+- Adding static files
+
+Create subfolder call "static/<app_name>/"
+
+In html file, we can add static file to reuse by
+
+```html
+{% block css_files %} <link rel="stylesheet" href="{% static
+"challenges/challenges.css" %}"> {% endblock %}
+```
+
+Note that if want to apply static file, we should rerun server to apply new code
